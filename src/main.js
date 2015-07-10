@@ -21,8 +21,8 @@ camera.position.set(0, 0, 10);
 camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 window.addEventListener("resize", function () {
-    let w = renderer.domElement.width;
-    let h = renderer.domElement.height;
+    let w = window.innerWidth;
+    let h = window.innerHeight;
 
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
