@@ -1,6 +1,9 @@
+import Debug from "./framesynthesis/Debug";
 import Utils from "./Utils";
 import Player from "./Player";
 import Ball from "./Ball";
+
+Debug.log("Hello, ECMAScript 2015!");
 
 let renderer;
 let camera;
