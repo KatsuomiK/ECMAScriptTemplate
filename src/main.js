@@ -13,7 +13,7 @@ renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
+camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
 camera.position.set(0, 0, 10);
 camera.lookAt(new THREE.Vector3(0, 0, 0));
 
@@ -79,6 +79,8 @@ let prevPosition;
 let rotateX = 0;
 let rotateY = 0;
 
+let running = true;
+
 // ========================================================================
 // Setup user input
 document.ontouchstart = function (event) {
@@ -117,13 +119,21 @@ document.onmousemove = function (event) {
     targetPosition = ray.intersectPlane(xyPlane);
 };
 
+document.addEventListener("keydown", (e) => {
+    if (e.keyCode === 27) {
+        running = false;
+    }
+});
+
 // ========================================================================
 // Game loop
-function render() {
-    let i;
-
+function update() {
+    if (!running) {
+        return;
+    }
+    requestAnimationFrame(update);
     let deltaTime = globalTimer.getDelta();
-
+    
     player.update(deltaTime, targetPosition);
     player.physicsUpdate(deltaTime);
 
@@ -131,7 +141,7 @@ function render() {
     playerMesh.position.y = player.position.y;
     playerMesh.quaternion.setFromAxisAngle(new THREE.Vector3(0, 0, 1), player.rotation);
 
-    for (i = 0; i < BALL_NUM; i++) {
+    for (let i = 0; i < BALL_NUM; i++) {
         balls[i].update(deltaTime);
         balls[i].physicsUpdate(deltaTime);
         // ballMeshes[i].position = balls[i].position;
@@ -142,7 +152,7 @@ function render() {
     rotateY = 0;
 
     renderer.render(scene, camera);
-    requestAnimationFrame(render);
 }
 
-requestAnimationFrame(render);
+update();
+
