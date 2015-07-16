@@ -2,7 +2,7 @@
 
 Watchify + Babelify + BrowserSync template
 
-This base project is public domain (other than lib/*).
+This base project (excluding lib directory) is public domain.
 
 ## Setup
 
