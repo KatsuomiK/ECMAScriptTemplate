@@ -1,13 +1,13 @@
-import Utils from "./Utils";
+import MyMath from "./framesynthesis/MyMath";
 import GameObject from "./GameObject";
 
 export default class Ball extends GameObject {
     constructor() {
         super();
 
-        var x = Utils.rnd(-5, 5);
-        var y = Utils.rnd(-5, 5);
-        var z = Utils.rnd(5, 10);
+        var x = MyMath.random(-5, 5);
+        var y = MyMath.random(-5, 5);
+        var z = MyMath.random(5, 10);
 
         this.position.set(x, y, z);
     }
