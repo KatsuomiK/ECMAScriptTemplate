@@ -1,6 +1,7 @@
-# ECMAScript 2015 Simple Project
+# ECMAScript 2015 Project Template
 
-Watchify + Babelify + BrowserSync template
+Watchify + Babelify + BrowserSync  
+jsconfig.json is for Visual Studio Code.
 
 This base project (excluding lib directory) is public domain.
 
@@ -28,3 +29,10 @@ To launch a browser and start watch:
 
 $ npm run watch
 
+To just launch:
+
+$ npm start
+
+To build and minify:
+
+$ npm run build
