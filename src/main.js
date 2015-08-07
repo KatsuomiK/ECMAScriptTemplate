@@ -1,3 +1,5 @@
+import "babel/polyfill";
+
 import Debug from "./framesynthesis/Debug";
 import Utils from "./Utils";
 import Player from "./Player";
