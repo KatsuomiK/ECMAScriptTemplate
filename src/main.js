@@ -1,5 +1,3 @@
-import "babel/polyfill";
-
 import Debug from "./framesynthesis/Debug";
 import Utils from "./Utils";
 import Player from "./Player";
@@ -12,8 +10,7 @@ let camera;
 
 let globalTimer = new THREE.Clock();
 
-// ========================================================================
-// Setup Three.js
+// setup Three.js
 renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
@@ -32,11 +29,10 @@ window.addEventListener("resize", function () {
     renderer.setSize(w, h);
 }, false);
 
-// ========================================================================
-// Create scene
+// create scene
 let scene = new THREE.Scene();
 
-// Create lights
+// create lights
 scene.add(new THREE.AmbientLight(0x101010));
 
 let directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.5);
@@ -47,7 +43,7 @@ scene.add(directionalLight);
 // light.position.set(1, 1, 1);
 // scene.add(light);
 
-// Create player
+// create player
 let geometry = new THREE.BoxGeometry(1, 1, 1);
 //let material = new THREE.MeshLambertMaterial({
 //    color: 0x00FF00
@@ -60,7 +56,7 @@ let player = new Player();
 let playerMesh = new THREE.Mesh(geometry, material);
 scene.add(playerMesh);
 
-// Create balls
+// create balls
 let BALL_NUM = 30;
 let balls = [];
 let ballMeshes = [];
@@ -86,8 +82,7 @@ let rotateY = 0;
 
 let running = true;
 
-// ========================================================================
-// Setup user input
+// setup user input
 document.ontouchstart = function (event) {
     prevPosition = Utils.toLogicalPosition(event.pageX, event.pageY);
 };
@@ -130,8 +125,7 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-// ========================================================================
-// Game loop
+// game loop
 function update() {
     if (!running) {
         return;
@@ -149,7 +143,6 @@ function update() {
     for (let i = 0; i < BALL_NUM; i++) {
         balls[i].update(deltaTime);
         balls[i].physicsUpdate(deltaTime);
-        // ballMeshes[i].position = balls[i].position;
         ballMeshes[i].position.copy(balls[i].position);
     }
 

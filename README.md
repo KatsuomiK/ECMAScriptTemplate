@@ -13,16 +13,14 @@ This project uses following tools.
 
 - browserify
 - watchify
-- babel
 - babelify
 - browser-sync
 - parallelshell
 - uglifyjs
 - mocha
 
-At least Babel and Babelify (28MB) must be installed as a local module.
+At least Babelify (14MB) must be installed as a local module.
 
-$ npm install babel  
 $ npm install babelify
 
 ## Development
