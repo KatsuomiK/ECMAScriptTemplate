@@ -1,7 +1,6 @@
 # ECMAScript 2015 Project Template
 
 Watchify + Babelify + BrowserSync  
-jsconfig.json is for Visual Studio Code.
 
 This base project (excluding lib directory) is public domain.
 
@@ -18,10 +17,6 @@ This project uses following tools.
 - parallelshell
 - uglifyjs
 - mocha
-
-At least Babelify (14MB) must be installed as a local module.
-
-$ npm install babelify
 
 ## Development
 

@@ -13,16 +13,24 @@
   },
   "browserify": {
     "transform": [
-      "babelify"
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
     ]
   },
   "devDependencies": {
-    "browserify": "*",
-    "watchify": "*", 
-    "babelify": "*",
-    "uglifyjs": "*",
-    "browser-sync": "*",
-    "parallelshell": "*",
-    "mocha": "*"
+    "babel-preset-es2015": "^6.6.0",
+    "babelify": "^7.2.0",
+    "browser-sync": "^2.11.2",
+    "browserify": "^13.0.0",
+    "mocha": "^2.4.5",
+    "parallelshell": "^2.0.0",
+    "uglifyjs": "^2.4.10",
+    "watchify": "^3.7.0"
   }
 }
