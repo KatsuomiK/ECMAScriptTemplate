@@ -1,8 +1,8 @@
-# ECMAScript 2015 Project Template
+# ECMAScript Project Template
 
-Watchify + Babelify + BrowserSync  
+npm + Parcel
 
-This base project (excluding lib directory) is public domain.
+This template project is public domain.
 
 ## Setup
 
@@ -10,24 +10,16 @@ $ npm install
 
 This project uses following tools.
 
-- browserify
-- watchify
-- babelify
-- browser-sync
-- parallelshell
-- uglifyjs
-- mocha
+- Parcel
 
 ## Development
 
 To launch a browser and start watch:
 
-$ npm run watch
-
 To just launch:
 
 $ npm start
 
-To build and minify:
+To build:
 
 $ npm run build
