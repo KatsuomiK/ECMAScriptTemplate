@@ -1,9 +1,11 @@
+import * as THREE from 'three';
+
 import Debug from "./framesynthesis/Debug";
 import Utils from "./Utils";
 import Player from "./Player";
 import Ball from "./Ball";
 
-Debug.log("Hello, ECMAScript 2015!");
+Debug.log("Hello, ECMAScript!");
 
 let renderer;
 let camera;

@@ -1,3 +1,5 @@
+import * as THREE from 'three';
+
 export default class GameObject {
     constructor() {
         this.position = new THREE.Vector3();
