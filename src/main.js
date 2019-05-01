@@ -5,6 +5,8 @@ import Utils from "./Utils";
 import Player from "./Player";
 import Ball from "./Ball";
 
+import pixeltestImageURL from '/assets/pixeltest.png';
+
 Debug.log("Hello, ECMAScript!");
 
 let renderer;
@@ -51,8 +53,8 @@ const geometry = new THREE.BoxGeometry(1, 1, 1);
 //    color: 0x00FF00
 //});
 
-const texture = THREE.ImageUtils.loadTexture("assets/pixeltest.png");
-const material = new THREE.MeshBasicMaterial({map: texture});
+const texture = THREE.ImageUtils.loadTexture(pixeltestImageURL);
+const material = new THREE.MeshBasicMaterial({ map: texture });
 
 const player = new Player();
 const playerMesh = new THREE.Mesh(geometry, material);
@@ -99,7 +101,7 @@ document.ontouchmove = document.ontouchend = function (event) {
 };
 
 const xyPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
-const targetPosition = new THREE.Vector3();
+let targetPosition = new THREE.Vector3();
 
 document.onmousemove = function (event) {
     let ratio;
@@ -134,7 +136,7 @@ function update() {
     }
     requestAnimationFrame(update);
     const deltaTime = globalTimer.getDelta();
-    
+
     player.update(deltaTime, targetPosition);
     player.physicsUpdate(deltaTime);
 
