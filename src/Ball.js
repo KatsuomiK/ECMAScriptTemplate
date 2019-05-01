@@ -5,9 +5,9 @@ export default class Ball extends GameObject {
     constructor() {
         super();
 
-        var x = MyMath.random(-5, 5);
-        var y = MyMath.random(-5, 5);
-        var z = MyMath.random(5, 10);
+        const x = MyMath.random(-5, 5);
+        const y = MyMath.random(-5, 5);
+        const z = MyMath.random(5, 10);
 
         this.position.set(x, y, z);
     }

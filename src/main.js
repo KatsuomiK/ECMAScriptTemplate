@@ -10,7 +10,7 @@ Debug.log("Hello, ECMAScript!");
 let renderer;
 let camera;
 
-let globalTimer = new THREE.Clock();
+const globalTimer = new THREE.Clock();
 
 // setup Three.js
 renderer = new THREE.WebGLRenderer();
@@ -22,8 +22,8 @@ camera.position.set(0, 0, 10);
 camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 window.addEventListener("resize", function () {
-    let w = window.innerWidth;
-    let h = window.innerHeight;
+    const w = window.innerWidth;
+    const h = window.innerHeight;
 
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
@@ -32,12 +32,12 @@ window.addEventListener("resize", function () {
 }, false);
 
 // create scene
-let scene = new THREE.Scene();
+const scene = new THREE.Scene();
 
 // create lights
 scene.add(new THREE.AmbientLight(0x101010));
 
-let directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.5);
+const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.5);
 directionalLight.position.set(-1, 1, 1);
 scene.add(directionalLight);
 
@@ -46,33 +46,33 @@ scene.add(directionalLight);
 // scene.add(light);
 
 // create player
-let geometry = new THREE.BoxGeometry(1, 1, 1);
+const geometry = new THREE.BoxGeometry(1, 1, 1);
 //let material = new THREE.MeshLambertMaterial({
 //    color: 0x00FF00
 //});
 
-let texture = THREE.ImageUtils.loadTexture("assets/pixeltest.png");
-let material = new THREE.MeshBasicMaterial({map: texture});
+const texture = THREE.ImageUtils.loadTexture("assets/pixeltest.png");
+const material = new THREE.MeshBasicMaterial({map: texture});
 
-let player = new Player();
-let playerMesh = new THREE.Mesh(geometry, material);
+const player = new Player();
+const playerMesh = new THREE.Mesh(geometry, material);
 scene.add(playerMesh);
 
 // create balls
-let BALL_NUM = 30;
-let balls = [];
-let ballMeshes = [];
+const BALL_NUM = 30;
+const balls = [];
+const ballMeshes = [];
 
 for (let i = 0; i < BALL_NUM; i++) {
-    let geometry = new THREE.SphereGeometry(0.5, 16, 16);
-    let material = new THREE.MeshLambertMaterial({
+    const geometry = new THREE.SphereGeometry(0.5, 16, 16);
+    const material = new THREE.MeshLambertMaterial({
         color: 0x00FF00
     });
 
-    let ball = new Ball();
+    const ball = new Ball();
     balls.push(ball);
 
-    let ballMesh = new THREE.Mesh(geometry, material);
+    const ballMesh = new THREE.Mesh(geometry, material);
     scene.add(ballMesh);
 
     ballMeshes.push(ballMesh);
@@ -90,7 +90,7 @@ document.ontouchstart = function (event) {
 };
 
 document.ontouchmove = document.ontouchend = function (event) {
-    let position = Utils.toLogicalPosition(event.pageX, event.pageY);
+    const position = Utils.toLogicalPosition(event.pageX, event.pageY);
     rotateX = (position.x - prevPosition.x) * 3;
     rotateY = (position.y - prevPosition.y) * 3;
     prevPosition = position;
@@ -98,8 +98,8 @@ document.ontouchmove = document.ontouchend = function (event) {
     event.preventDefault();
 };
 
-let xyPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
-let targetPosition = new THREE.Vector3();
+const xyPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+const targetPosition = new THREE.Vector3();
 
 document.onmousemove = function (event) {
     let ratio;
@@ -108,16 +108,16 @@ document.onmousemove = function (event) {
     } else {
         ratio = 1;
     }
-    let mouseX = event.pageX * ratio;
-    let mouseY = event.pageY * ratio;
+    const mouseX = event.pageX * ratio;
+    const mouseY = event.pageY * ratio;
 
     // Project mouse position to the XY plane
-    let x = (mouseX / renderer.domElement.width) * 2 - 1;
-    let y = -(mouseY / renderer.domElement.height) * 2 + 1;
-    let mouse = new THREE.Vector3(x, y, 0);
+    const x = (mouseX / renderer.domElement.width) * 2 - 1;
+    const y = -(mouseY / renderer.domElement.height) * 2 + 1;
+    const mouse = new THREE.Vector3(x, y, 0);
     mouse.unproject(camera);
 
-    let ray = new THREE.Ray(camera.position, mouse.sub(camera.position).normalize());
+    const ray = new THREE.Ray(camera.position, mouse.sub(camera.position).normalize());
     targetPosition = ray.intersectPlane(xyPlane);
 };
 
@@ -133,7 +133,7 @@ function update() {
         return;
     }
     requestAnimationFrame(update);
-    let deltaTime = globalTimer.getDelta();
+    const deltaTime = globalTimer.getDelta();
     
     player.update(deltaTime, targetPosition);
     player.physicsUpdate(deltaTime);

@@ -1,12 +1,12 @@
 export default class Utils {
     static toLogicalPosition(pageX, pageY) {
-        let w = window.innerWidth;
-        let h = window.innerHeight;
+        const w = window.innerWidth;
+        const h = window.innerHeight;
 
-        let max = Math.max(w, h);
+        const max = Math.max(w, h);
 
-        let x = (event.pageX - w / 2) / max;
-        let y = (event.pageY - h / 2) / max;
+        const x = (event.pageX - w / 2) / max;
+        const y = (event.pageY - h / 2) / max;
 
         return {
             x: x,
