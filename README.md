@@ -14,9 +14,7 @@ This project uses following tools.
 
 ## Development
 
-To launch a browser and start watch:
-
-To just launch:
+To launch:
 
 $ npm start
 
